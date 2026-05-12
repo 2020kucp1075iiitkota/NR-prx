@@ -224,53 +224,166 @@ export default function Page() {
           .nr-section { padding: 80px 24px !important; }
         }
         @media (max-width: 600px) {
-          /* ── HERO: text left, photo right ── */
-          .nr-hero-section { padding: 0 14px !important; padding-top: 68px !important; min-height: 100svh !important; }
-          .nr-hero-grid { flex-direction: row !important; gap: 12px !important; align-items: center !important; }
-          .nr-hero-text { flex: 1 !important; min-width: 0 !important; max-width: none !important; }
-          .nr-hero-text .gold-tag { font-size: 7px !important; letter-spacing: 0.18em !important; margin-bottom: 5px !important; }
-          .nr-hero-text h1 { font-size: 26px !important; margin-bottom: 6px !important; }
-          .nr-hero-sub { font-size: 8px !important; letter-spacing: 0.1em !important; margin-bottom: 16px !important; }
-          .nr-hero-logo-wrap svg { width: 54px !important; height: auto !important; }
-          .nr-hero-logo-wrap { margin-bottom: 6px !important; }
-          .nr-hero-btns { gap: 8px !important; flex-direction: column !important; align-items: flex-start !important; }
-          .nr-hero-btns .btn-w, .nr-hero-btns .btn-g { padding: 10px 18px !important; font-size: 11px !important; }
-          .nr-hero-photo { width: 40vw !important; flex: none !important; max-width: none !important; margin: 0 !important; }
 
-          /* ── GALLERY: collage ── */
-          .nr-section { padding: 52px 14px !important; }
-          .nr-gallery-grid { grid-template-columns: 56% 42% !important; gap: 8px !important; }
-          .nr-gallery-p1 { grid-row: 1 / 3 !important; aspect-ratio: 3/4 !important; }
-          .nr-gallery-p2 { aspect-ratio: 1/1 !important; }
-          .nr-gallery-p3 { grid-column: 2 / 3 !important; aspect-ratio: 1/1 !important; max-height: none !important; }
-          .nr-gallery-bottom { gap: 8px !important; margin-top: 8px !important; }
-          .nr-gallery-bottom > div { aspect-ratio: 1/1 !important; }
+          /* ─── NAV ─── */
+          .nr-nav { padding: 10px 16px !important; }
+          .nr-nav-links { gap: 18px !important; }
+          .nr-navlink { font-size: 10px !important; letter-spacing: 0.1em !important; }
 
-          /* ── STORY: text left, photo right ── */
-          .nr-story-grid { flex-direction: row !important; gap: 10px !important; align-items: stretch !important; }
-          .nr-story-text { flex: 1 !important; min-width: 0 !important; }
-          .nr-story-glass { padding: 20px 14px !important; border-radius: 14px !important; }
-          .nr-story-glass .gold-tag { margin-bottom: 10px !important; }
-          .nr-story-glass h2 { font-size: 17px !important; margin-bottom: 14px !important; }
-          .nr-story-glass p { font-size: 10.5px !important; line-height: 1.6 !important; margin-bottom: 12px !important; }
-          .nr-story-glass .nr-story-btns { margin-top: 20px !important; gap: 8px !important; }
-          .nr-story-glass .nr-story-btns .btn-w,
-          .nr-story-glass .nr-story-btns .btn-g { padding: 9px 14px !important; font-size: 10px !important; }
-          .nr-story-photo { width: 36vw !important; flex: none !important; max-width: none !important; margin: 0 !important; align-self: stretch !important; }
-          .nr-story-photo > div { height: 100% !important; aspect-ratio: unset !important; }
+          /* ─── HERO: info left · photo right ─── */
+          .nr-hero-section {
+            padding: 80px 16px 48px !important;
+            min-height: auto !important;
+            display: flex !important;
+            align-items: center !important;
+          }
+          .nr-hero-grid {
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 16px !important;
+            max-width: 100% !important;
+          }
+          .nr-hero-text {
+            flex: 1 1 0 !important;
+            min-width: 0 !important;
+            max-width: none !important;
+          }
+          .nr-hero-logo-wrap { margin-bottom: 4px !important; }
+          .nr-hero-logo-wrap svg { width: 50px !important; height: auto !important; }
+          .nr-hero-text .gold-tag {
+            font-size: 7px !important;
+            letter-spacing: 0.14em !important;
+            margin-bottom: 4px !important;
+          }
+          .nr-hero-text h1 {
+            font-size: 30px !important;
+            line-height: 1.05 !important;
+            margin-bottom: 6px !important;
+          }
+          .nr-hero-sub {
+            font-size: 7.5px !important;
+            letter-spacing: 0.1em !important;
+            margin-bottom: 18px !important;
+          }
+          .nr-hero-btns {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 8px !important;
+          }
+          .nr-hero-btns .btn-w,
+          .nr-hero-btns .btn-g {
+            padding: 11px 22px !important;
+            font-size: 11px !important;
+            letter-spacing: 0.06em !important;
+          }
+          .nr-hero-photo {
+            flex: 0 0 44% !important;
+            width: 44% !important;
+            max-width: 160px !important;
+            margin: 0 !important;
+          }
 
-          /* ── SPECS ── */
-          .nr-specs-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
-          .nr-specs-grid > div { padding: 20px 12px !important; }
+          /* ─── GALLERY: magazine collage ─── */
+          .nr-section { padding: 48px 16px !important; }
+          .nr-gallery-grid {
+            grid-template-columns: 58% 40% !important;
+            gap: 8px !important;
+          }
+          /* Photo 1: tall, spans 2 rows on the left */
+          .nr-gallery-p1 {
+            grid-column: 1 !important;
+            grid-row: 1 / 3 !important;
+            aspect-ratio: 2/3 !important;
+          }
+          /* Photo 2: top-right square */
+          .nr-gallery-p2 {
+            grid-column: 2 !important;
+            grid-row: 1 !important;
+            aspect-ratio: 1/1 !important;
+          }
+          /* Photo 3: bottom-right square (was full-width on desktop) */
+          .nr-gallery-p3 {
+            grid-column: 2 !important;
+            grid-row: 2 !important;
+            aspect-ratio: 1/1 !important;
+            max-height: none !important;
+          }
+          /* Bottom row: two equal tiles */
+          .nr-gallery-bottom {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 8px !important;
+            margin-top: 8px !important;
+          }
 
-          /* ── RESERVE ── */
-          .nr-reserve-card { padding: 40px 20px !important; }
+          /* ─── SPECS ─── */
+          .nr-specs-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 10px !important;
+          }
+          .nr-specs-grid > div { padding: 18px 10px !important; border-radius: 12px !important; }
+
+          /* ─── STORY: info left · photo right ─── */
+          .nr-story-grid {
+            flex-direction: row !important;
+            align-items: stretch !important;
+            gap: 10px !important;
+          }
+          .nr-story-text {
+            flex: 1 1 0 !important;
+            min-width: 0 !important;
+          }
+          .nr-story-glass {
+            padding: 18px 13px !important;
+            border-radius: 14px !important;
+            height: 100% !important;
+            box-sizing: border-box !important;
+          }
+          .nr-story-glass .gold-tag {
+            font-size: 7px !important;
+            margin-bottom: 8px !important;
+          }
+          .nr-story-glass h2 {
+            font-size: 16px !important;
+            margin-bottom: 12px !important;
+            line-height: 1.2 !important;
+          }
+          .nr-story-glass > p,
+          .nr-story-glass [style*="border-left"] {
+            font-size: 10px !important;
+            line-height: 1.6 !important;
+            padding-left: 10px !important;
+            margin-bottom: 10px !important;
+          }
+          .nr-story-btns {
+            margin-top: 14px !important;
+            flex-direction: column !important;
+            gap: 7px !important;
+          }
+          .nr-story-btns .btn-w,
+          .nr-story-btns .btn-g {
+            padding: 9px 16px !important;
+            font-size: 10px !important;
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .nr-story-photo {
+            flex: 0 0 36vw !important;
+            width: 36vw !important;
+            max-width: none !important;
+            margin: 0 !important;
+            align-self: stretch !important;
+          }
+          /* Force Photo inner div to fill full height of the flex row */
+          .nr-story-photo > div {
+            height: 100% !important;
+            aspect-ratio: unset !important;
+            min-height: 200px !important;
+          }
+
+          /* ─── RESERVE ─── */
+          .nr-reserve-card { padding: 36px 18px !important; }
           .nr-input { max-width: 100% !important; }
-
-          /* ── NAV ── */
-          .nr-nav { padding: 12px 16px !important; }
-          .nr-nav-links { gap: 16px !important; }
-          .nr-navlink { font-size: 9px !important; letter-spacing: 0.1em !important; }
         }
       `}</style>
 
