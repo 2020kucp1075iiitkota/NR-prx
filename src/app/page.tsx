@@ -232,8 +232,9 @@ export default function Page() {
 
           /* ─── HERO: info left · photo right ─── */
           .nr-hero-section {
-            padding: 80px 16px 48px !important;
-            min-height: auto !important;
+            padding: 0 16px !important;
+            padding-top: 60px !important;
+            min-height: 100svh !important;
             display: flex !important;
             align-items: center !important;
           }
@@ -283,6 +284,17 @@ export default function Page() {
             max-width: 160px !important;
             margin: 0 !important;
           }
+          .nr-hero-features {
+            margin-top: 24px !important;
+            gap: 7px !important;
+          }
+          .nr-hero-features > div {
+            padding: 10px 11px !important;
+            border-radius: 10px !important;
+          }
+          .nr-hero-features > div span:nth-child(1) { font-size: 11px !important; }
+          .nr-hero-features > div span:nth-child(2) { font-size: 7px !important; }
+          .nr-hero-features > div span:nth-child(3) { font-size: 11px !important; }
 
           /* ─── GALLERY: magazine collage ─── */
           .nr-section { padding: 48px 16px !important; }
@@ -472,6 +484,50 @@ export default function Page() {
                 <button className="btn-g" onClick={() => scrollTo('gallery')}>
                   Discover
                 </button>
+              </div>
+
+              {/* ── Feature highlights ── */}
+              <div className="nr-hero-features" style={{
+                marginTop: 44,
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 10,
+              }}>
+                {[
+                  { icon: '⚙', label: 'Movement', val: 'Powermatic 80' },
+                  { icon: '◇', label: 'Crystal',  val: 'Sapphire AR' },
+                  { icon: '⬡', label: 'Case',     val: '42mm · 316L' },
+                  { icon: '≋', label: 'Water',    val: '100m / 10ATM' },
+                ].map(({ icon, label, val }) => (
+                  <div key={label} style={{
+                    background: 'rgba(255,255,255,0.07)',
+                    border: '1px solid rgba(255,255,255,0.13)',
+                    borderRadius: 12,
+                    padding: '14px 16px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 4,
+                  }}>
+                    <span style={{
+                      fontSize: 13,
+                      color: GOLD,
+                      lineHeight: 1,
+                    }}>{icon}</span>
+                    <span style={{
+                      fontSize: 9,
+                      letterSpacing: '0.18em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(255,255,255,0.42)',
+                    }}>{label}</span>
+                    <span style={{
+                      fontFamily: SERIF,
+                      fontSize: 13,
+                      color: 'white',
+                      fontWeight: 400,
+                      lineHeight: 1.2,
+                    }}>{val}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
