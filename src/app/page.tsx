@@ -230,20 +230,25 @@ export default function Page() {
           .nr-nav-links { gap: 18px !important; }
           .nr-navlink { font-size: 10px !important; letter-spacing: 0.1em !important; }
 
-          /* ─── HERO: info left · photo right ─── */
+          /* ─── HERO: text+photo top · glass features bottom ─── */
           .nr-hero-section {
             padding: 0 16px !important;
-            padding-top: 60px !important;
+            padding-top: 58px !important;
             min-height: 100svh !important;
             display: flex !important;
             align-items: center !important;
+          }
+          .nr-hero-inner {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 20px !important;
+            width: 100% !important;
           }
           .nr-hero-grid {
             flex-direction: row !important;
             align-items: center !important;
             justify-content: flex-start !important;
-            gap: 16px !important;
-            max-width: 100% !important;
+            gap: 14px !important;
           }
           .nr-hero-text {
             flex: 1 1 0 !important;
@@ -251,50 +256,42 @@ export default function Page() {
             max-width: none !important;
           }
           .nr-hero-logo-wrap { margin-bottom: 4px !important; }
-          .nr-hero-logo-wrap svg { width: 50px !important; height: auto !important; }
+          .nr-hero-logo-wrap svg { width: 48px !important; height: auto !important; }
           .nr-hero-text .gold-tag {
             font-size: 7px !important;
             letter-spacing: 0.14em !important;
             margin-bottom: 4px !important;
           }
           .nr-hero-text h1 {
-            font-size: 30px !important;
+            font-size: 28px !important;
             line-height: 1.05 !important;
             margin-bottom: 6px !important;
           }
           .nr-hero-sub {
             font-size: 7.5px !important;
             letter-spacing: 0.1em !important;
-            margin-bottom: 18px !important;
+            margin-bottom: 16px !important;
           }
           .nr-hero-btns {
             flex-direction: column !important;
             align-items: flex-start !important;
-            gap: 8px !important;
+            gap: 7px !important;
           }
           .nr-hero-btns .btn-w,
           .nr-hero-btns .btn-g {
-            padding: 11px 22px !important;
+            padding: 10px 18px !important;
             font-size: 11px !important;
-            letter-spacing: 0.06em !important;
           }
           .nr-hero-photo {
             flex: 0 0 44% !important;
             width: 44% !important;
-            max-width: 160px !important;
+            max-width: 158px !important;
             margin: 0 !important;
           }
-          .nr-hero-features {
-            margin-top: 24px !important;
-            gap: 7px !important;
-          }
-          .nr-hero-features > div {
-            padding: 10px 11px !important;
-            border-radius: 10px !important;
-          }
-          .nr-hero-features > div span:nth-child(1) { font-size: 11px !important; }
-          .nr-hero-features > div span:nth-child(2) { font-size: 7px !important; }
-          .nr-hero-features > div span:nth-child(3) { font-size: 11px !important; }
+          /* Hide desktop feature cards on mobile */
+          .nr-hero-features { display: none !important; }
+          /* Show glass feature panel on mobile */
+          .nr-features-glass { display: block !important; }
 
           /* ─── GALLERY: magazine collage ─── */
           .nr-section { padding: 48px 16px !important; }
@@ -449,104 +446,125 @@ export default function Page() {
           minHeight: '100vh', display: 'flex', alignItems: 'center',
           padding: '0 52px', paddingTop: 96,
         }} className="nr-hero-section">
-          <div className="nr-hero-grid" style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            width: '100%', maxWidth: 1200, margin: '0 auto', gap: 60,
-          }}>
-            {/* Left text panel */}
-            <div className="reveal nr-hero-text" style={{ flex: 1, maxWidth: 520 }}>
-              <p className="gold-tag" style={{ marginBottom: 12 }}>
-                Limited Edition · 500 Pieces
-              </p>
-              <div className="nr-hero-logo-wrap" style={{ marginBottom: 12 }}>
-                <NRLogo size={90} variant="white" showTagline={false} />
-              </div>
-              <h1 style={{
-                fontFamily: SERIF,
-                fontSize: 'clamp(36px, 5vw, 64px)',
-                fontWeight: 400, lineHeight: 1.1,
-                color: 'white', marginBottom: 20,
-                letterSpacing: '-0.01em',
-              }}>
-                Calibre I
-              </h1>
-              <p className="nr-hero-sub" style={{
-                color: 'rgba(255,255,255,0.56)', fontSize: 14,
-                letterSpacing: '0.2em', textTransform: 'uppercase',
-                marginBottom: 52, fontWeight: 300,
-              }}>
-                42mm Automatic · Swiss Movement
-              </p>
-              <div className="nr-hero-btns" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <button className="btn-w" onClick={() => scrollTo('reserve')}>
-                  Reserve Now
-                </button>
-                <button className="btn-g" onClick={() => scrollTo('gallery')}>
-                  Discover
-                </button>
+
+          {/* Inner wrapper — column on mobile so features drop below */}
+          <div className="nr-hero-inner" style={{ width: '100%', maxWidth: 1200, margin: '0 auto' }}>
+
+            <div className="nr-hero-grid" style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 60,
+            }}>
+              {/* Left text panel */}
+              <div className="reveal nr-hero-text" style={{ flex: 1, maxWidth: 520 }}>
+                <p className="gold-tag" style={{ marginBottom: 12 }}>
+                  Limited Edition · 500 Pieces
+                </p>
+                <div className="nr-hero-logo-wrap" style={{ marginBottom: 12 }}>
+                  <NRLogo size={90} variant="white" showTagline={false} />
+                </div>
+                <h1 style={{
+                  fontFamily: SERIF,
+                  fontSize: 'clamp(36px, 5vw, 64px)',
+                  fontWeight: 400, lineHeight: 1.1,
+                  color: 'white', marginBottom: 20,
+                  letterSpacing: '-0.01em',
+                }}>
+                  Calibre I
+                </h1>
+                <p className="nr-hero-sub" style={{
+                  color: 'rgba(255,255,255,0.56)', fontSize: 14,
+                  letterSpacing: '0.2em', textTransform: 'uppercase',
+                  marginBottom: 52, fontWeight: 300,
+                }}>
+                  42mm Automatic · Swiss Movement
+                </p>
+                <div className="nr-hero-btns" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                  <button className="btn-w" onClick={() => scrollTo('reserve')}>Reserve Now</button>
+                  <button className="btn-g" onClick={() => scrollTo('gallery')}>Discover</button>
+                </div>
+
+                {/* Feature highlights — desktop only (hidden on mobile) */}
+                <div className="nr-hero-features" style={{
+                  marginTop: 44, display: 'grid',
+                  gridTemplateColumns: '1fr 1fr', gap: 10,
+                }}>
+                  {[
+                    { icon: '⚙', label: 'Movement', val: 'Powermatic 80' },
+                    { icon: '◇', label: 'Crystal',  val: 'Sapphire AR'   },
+                    { icon: '⬡', label: 'Case',     val: '42mm · 316L'   },
+                    { icon: '≋', label: 'Water',    val: '100m / 10ATM'  },
+                  ].map(({ icon, label, val }) => (
+                    <div key={label} style={{
+                      background: 'rgba(255,255,255,0.07)',
+                      border: '1px solid rgba(255,255,255,0.13)',
+                      borderRadius: 12, padding: '14px 16px',
+                      display: 'flex', flexDirection: 'column', gap: 4,
+                    }}>
+                      <span style={{ fontSize: 13, color: GOLD, lineHeight: 1 }}>{icon}</span>
+                      <span style={{ fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.42)' }}>{label}</span>
+                      <span style={{ fontFamily: SERIF, fontSize: 13, color: 'white', fontWeight: 400 }}>{val}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* ── Feature highlights ── */}
-              <div className="nr-hero-features" style={{
-                marginTop: 44,
+              {/* Right: hero photo */}
+              <div className="nr-hero-photo" style={{ flex: '0 0 auto', width: 'min(400px, 38vw)' }}>
+                <Photo
+                  src="/watches/hero.jpeg"
+                  alt="NR Calibre I"
+                  style={{
+                    width: '100%', aspectRatio: '3/4',
+                    borderRadius: 20, boxShadow: '0 32px 80px rgba(0,0,0,0.55)',
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* ── Glass features panel — mobile only ── */}
+            <div className="nr-features-glass" style={{ display: 'none' }}>
+              <div style={{
+                background: 'rgba(255,255,255,0.08)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255,255,255,0.18)',
+                borderRadius: 20,
+                padding: '20px 18px',
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
-                gap: 10,
+                gap: 12,
               }}>
                 {[
-                  { icon: '⚙', label: 'Movement', val: 'Powermatic 80' },
-                  { icon: '◇', label: 'Crystal',  val: 'Sapphire AR' },
-                  { icon: '⬡', label: 'Case',     val: '42mm · 316L' },
-                  { icon: '≋', label: 'Water',    val: '100m / 10ATM' },
-                ].map(({ icon, label, val }) => (
+                  { icon: '⚙', label: 'Movement', val: 'Powermatic 80',  sub: 'Self-winding' },
+                  { icon: '◇', label: 'Crystal',  val: 'Sapphire AR',    sub: 'Anti-reflective' },
+                  { icon: '⬡', label: 'Case',     val: '42mm · 316L',    sub: 'Stainless steel' },
+                  { icon: '≋', label: 'Water',    val: '100m / 10 ATM',  sub: 'Depth rated' },
+                ].map(({ icon, label, val, sub }) => (
                   <div key={label} style={{
-                    background: 'rgba(255,255,255,0.07)',
-                    border: '1px solid rgba(255,255,255,0.13)',
-                    borderRadius: 12,
-                    padding: '14px 16px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 4,
+                    display: 'flex', flexDirection: 'column', gap: 3,
+                    padding: '12px 14px',
+                    background: 'rgba(255,255,255,0.06)',
+                    border: '1px solid rgba(255,255,255,0.10)',
+                    borderRadius: 14,
                   }}>
+                    <span style={{ fontSize: 15, color: GOLD, lineHeight: 1, marginBottom: 2 }}>{icon}</span>
                     <span style={{
-                      fontSize: 13,
-                      color: GOLD,
-                      lineHeight: 1,
-                    }}>{icon}</span>
-                    <span style={{
-                      fontSize: 9,
-                      letterSpacing: '0.18em',
-                      textTransform: 'uppercase',
-                      color: 'rgba(255,255,255,0.42)',
+                      fontSize: 7.5, letterSpacing: '0.22em',
+                      textTransform: 'uppercase', color: 'rgba(255,255,255,0.38)',
+                      fontWeight: 400,
                     }}>{label}</span>
                     <span style={{
-                      fontFamily: SERIF,
-                      fontSize: 13,
-                      color: 'white',
-                      fontWeight: 400,
-                      lineHeight: 1.2,
+                      fontFamily: SERIF, fontSize: 14,
+                      color: 'white', fontWeight: 400, lineHeight: 1.2,
                     }}>{val}</span>
+                    <span style={{
+                      fontSize: 9, color: 'rgba(255,255,255,0.45)',
+                      letterSpacing: '0.04em', marginTop: 1,
+                    }}>{sub}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Right: hero photo */}
-            <div className="nr-hero-photo" style={{
-              flex: '0 0 auto',
-              width: 'min(400px, 38vw)',
-            }}>
-              <Photo
-                src="/watches/hero.jpeg"
-                alt="NR Calibre I"
-                style={{
-                  width: '100%',
-                  aspectRatio: '3/4',
-                  borderRadius: 20,
-                  boxShadow: '0 32px 80px rgba(0,0,0,0.55)',
-                }}
-              />
-            </div>
           </div>
         </section>
 
