@@ -226,6 +226,35 @@ export default function Page() {
         @media (max-width: 600px) {
           .nr-gallery-grid { grid-template-columns: 1fr !important; }
           .nr-specs-grid   { grid-template-columns: 1fr 1fr !important; }
+
+          /* Hero: compact on mobile */
+          .nr-hero-section { padding: 0 18px !important; padding-top: 80px !important; min-height: auto !important; }
+          .nr-hero-grid { gap: 28px !important; flex-direction: column !important; align-items: center !important; }
+          .nr-hero-photo { width: 68vw !important; max-width: 240px !important; margin: 0 auto !important; flex: none !important; }
+
+          /* Story photo smaller */
+          .nr-story-photo { width: 80vw !important; max-width: 280px !important; margin: 0 auto !important; }
+
+          /* Gallery: single column, shorter cards */
+          .nr-gallery-grid > div,
+          .nr-gallery-grid > * { max-height: 220px !important; }
+
+          /* Reduce section padding on mobile */
+          .nr-section { padding: 56px 18px !important; }
+
+          /* Specs: 2 cols but smaller padding */
+          .nr-specs-grid > div { padding: 22px 14px !important; }
+
+          /* Reserve card */
+          .nr-reserve-card { padding: 44px 24px !important; }
+
+          /* Nav */
+          .nr-nav { padding: 14px 18px !important; }
+          .nr-nav-links { gap: 18px !important; }
+          .nr-navlink { font-size: 10px !important; letter-spacing: 0.1em !important; }
+
+          /* Input full width */
+          .nr-input { max-width: 100% !important; }
         }
       `}</style>
 
@@ -267,7 +296,7 @@ export default function Page() {
           <a href="#" style={{ display: 'flex', alignItems: 'center' }}>
             <NRLogo size={52} variant="gold" showTagline={false} />
           </a>
-          <div style={{ display: 'flex', gap: 36 }}>
+          <div className="nr-nav-links" style={{ display: 'flex', gap: 36 }}>
             {[['Collection', 'gallery'], ['Maison', 'story'], ['Reserve', 'reserve']].map(([l, id]) => (
               <a key={id} href={`#${id}`} className="nr-navlink">{l}</a>
             ))}
@@ -278,7 +307,7 @@ export default function Page() {
         <section style={{
           minHeight: '100vh', display: 'flex', alignItems: 'center',
           padding: '0 52px', paddingTop: 96,
-        }}>
+        }} className="nr-hero-section">
           <div className="nr-hero-grid" style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             width: '100%', maxWidth: 1200, margin: '0 auto', gap: 60,
@@ -318,7 +347,7 @@ export default function Page() {
             </div>
 
             {/* Right: hero photo */}
-            <div style={{
+            <div className="nr-hero-photo" style={{
               flex: '0 0 auto',
               width: 'min(400px, 38vw)',
             }}>
@@ -463,7 +492,7 @@ export default function Page() {
             </div>
 
             {/* Photo */}
-            <div className="reveal rd2" style={{ flex: '0 0 auto', width: 'min(360px, 38vw)' }}>
+            <div className="reveal rd2 nr-story-photo" style={{ flex: '0 0 auto', width: 'min(360px, 38vw)' }}>
               <Photo
                 src="/watches/story.jpeg"
                 alt="NR Calibre I – presentation box"
@@ -480,7 +509,7 @@ export default function Page() {
         {/* ── RESERVE ── */}
         <section id="reserve" className="nr-section" style={{ padding: '120px 52px' }}>
           <div className="reveal" style={{ maxWidth: 520, margin: '0 auto', textAlign: 'center' }}>
-            <div className="glass" style={{ borderRadius: 26, padding: '68px 44px' }}>
+            <div className="glass nr-reserve-card" style={{ borderRadius: 26, padding: '68px 44px' }}>
               <p className="gold-tag" style={{ marginBottom: 20 }}>Exclusive Access</p>
               <h2 style={{
                 fontFamily: SERIF, fontSize: 'clamp(28px, 3.5vw, 44px)',
