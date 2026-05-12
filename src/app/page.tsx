@@ -230,7 +230,7 @@ export default function Page() {
           .nr-nav-links { gap: 18px !important; }
           .nr-navlink { font-size: 10px !important; letter-spacing: 0.1em !important; }
 
-          /* ─── HERO: text+photo top · glass features bottom ─── */
+          /* ─── HERO: top half centered · bottom half centered ─── */
           .nr-hero-section {
             padding: 0 16px !important;
             padding-top: 56px !important;
@@ -241,19 +241,28 @@ export default function Page() {
           .nr-hero-inner {
             display: flex !important;
             flex-direction: column !important;
-            justify-content: space-between !important;
             min-height: calc(100svh - 56px) !important;
-            padding-top: 14px !important;
-            padding-bottom: 22px !important;
             width: 100% !important;
+            padding: 0 !important;
             gap: 0 !important;
           }
+          /* Top half — text + photo, fills 50% of hero height */
           .nr-hero-grid {
+            flex: 1 !important;
             flex-direction: row !important;
             align-items: center !important;
             justify-content: flex-start !important;
             gap: 14px !important;
           }
+          /* Bottom half — glass panel fills 50%, content centered */
+          .nr-features-glass {
+            flex: 1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 0 0 16px !important;
+          }
+          .nr-features-glass > div { width: 100% !important; }
           .nr-hero-text {
             flex: 1 1 0 !important;
             min-width: 0 !important;
