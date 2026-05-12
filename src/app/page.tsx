@@ -254,13 +254,13 @@ export default function Page() {
             justify-content: flex-start !important;
             gap: 14px !important;
           }
-          /* Bottom half — glass panel fills 50%, content centered */
+          /* Bottom half — glass panel sits near the top of its half */
           .nr-features-glass {
             flex: 1 !important;
             display: flex !important;
-            align-items: center !important;
+            align-items: flex-start !important;
             justify-content: center !important;
-            padding: 0 0 16px !important;
+            padding: 20px 0 16px !important;
           }
           .nr-features-glass > div { width: 100% !important; }
           .nr-hero-text {
