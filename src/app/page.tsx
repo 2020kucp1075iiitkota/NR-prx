@@ -224,37 +224,53 @@ export default function Page() {
           .nr-section { padding: 80px 24px !important; }
         }
         @media (max-width: 600px) {
-          .nr-gallery-grid { grid-template-columns: 1fr !important; }
-          .nr-specs-grid   { grid-template-columns: 1fr 1fr !important; }
+          /* ── HERO: text left, photo right ── */
+          .nr-hero-section { padding: 0 14px !important; padding-top: 68px !important; min-height: 100svh !important; }
+          .nr-hero-grid { flex-direction: row !important; gap: 12px !important; align-items: center !important; }
+          .nr-hero-text { flex: 1 !important; min-width: 0 !important; max-width: none !important; }
+          .nr-hero-text .gold-tag { font-size: 7px !important; letter-spacing: 0.18em !important; margin-bottom: 5px !important; }
+          .nr-hero-text h1 { font-size: 26px !important; margin-bottom: 6px !important; }
+          .nr-hero-sub { font-size: 8px !important; letter-spacing: 0.1em !important; margin-bottom: 16px !important; }
+          .nr-hero-logo-wrap svg { width: 54px !important; height: auto !important; }
+          .nr-hero-logo-wrap { margin-bottom: 6px !important; }
+          .nr-hero-btns { gap: 8px !important; flex-direction: column !important; align-items: flex-start !important; }
+          .nr-hero-btns .btn-w, .nr-hero-btns .btn-g { padding: 10px 18px !important; font-size: 11px !important; }
+          .nr-hero-photo { width: 40vw !important; flex: none !important; max-width: none !important; margin: 0 !important; }
 
-          /* Hero: compact on mobile */
-          .nr-hero-section { padding: 0 18px !important; padding-top: 80px !important; min-height: auto !important; }
-          .nr-hero-grid { gap: 28px !important; flex-direction: column !important; align-items: center !important; }
-          .nr-hero-photo { width: 68vw !important; max-width: 240px !important; margin: 0 auto !important; flex: none !important; }
+          /* ── GALLERY: collage ── */
+          .nr-section { padding: 52px 14px !important; }
+          .nr-gallery-grid { grid-template-columns: 56% 42% !important; gap: 8px !important; }
+          .nr-gallery-p1 { grid-row: 1 / 3 !important; aspect-ratio: 3/4 !important; }
+          .nr-gallery-p2 { aspect-ratio: 1/1 !important; }
+          .nr-gallery-p3 { grid-column: 2 / 3 !important; aspect-ratio: 1/1 !important; max-height: none !important; }
+          .nr-gallery-bottom { gap: 8px !important; margin-top: 8px !important; }
+          .nr-gallery-bottom > div { aspect-ratio: 1/1 !important; }
 
-          /* Story photo smaller */
-          .nr-story-photo { width: 80vw !important; max-width: 280px !important; margin: 0 auto !important; }
+          /* ── STORY: text left, photo right ── */
+          .nr-story-grid { flex-direction: row !important; gap: 10px !important; align-items: stretch !important; }
+          .nr-story-text { flex: 1 !important; min-width: 0 !important; }
+          .nr-story-glass { padding: 20px 14px !important; border-radius: 14px !important; }
+          .nr-story-glass .gold-tag { margin-bottom: 10px !important; }
+          .nr-story-glass h2 { font-size: 17px !important; margin-bottom: 14px !important; }
+          .nr-story-glass p { font-size: 10.5px !important; line-height: 1.6 !important; margin-bottom: 12px !important; }
+          .nr-story-glass .nr-story-btns { margin-top: 20px !important; gap: 8px !important; }
+          .nr-story-glass .nr-story-btns .btn-w,
+          .nr-story-glass .nr-story-btns .btn-g { padding: 9px 14px !important; font-size: 10px !important; }
+          .nr-story-photo { width: 36vw !important; flex: none !important; max-width: none !important; margin: 0 !important; align-self: stretch !important; }
+          .nr-story-photo > div { height: 100% !important; aspect-ratio: unset !important; }
 
-          /* Gallery: single column, shorter cards */
-          .nr-gallery-grid > div,
-          .nr-gallery-grid > * { max-height: 220px !important; }
+          /* ── SPECS ── */
+          .nr-specs-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+          .nr-specs-grid > div { padding: 20px 12px !important; }
 
-          /* Reduce section padding on mobile */
-          .nr-section { padding: 56px 18px !important; }
-
-          /* Specs: 2 cols but smaller padding */
-          .nr-specs-grid > div { padding: 22px 14px !important; }
-
-          /* Reserve card */
-          .nr-reserve-card { padding: 44px 24px !important; }
-
-          /* Nav */
-          .nr-nav { padding: 14px 18px !important; }
-          .nr-nav-links { gap: 18px !important; }
-          .nr-navlink { font-size: 10px !important; letter-spacing: 0.1em !important; }
-
-          /* Input full width */
+          /* ── RESERVE ── */
+          .nr-reserve-card { padding: 40px 20px !important; }
           .nr-input { max-width: 100% !important; }
+
+          /* ── NAV ── */
+          .nr-nav { padding: 12px 16px !important; }
+          .nr-nav-links { gap: 16px !important; }
+          .nr-navlink { font-size: 9px !important; letter-spacing: 0.1em !important; }
         }
       `}</style>
 
@@ -313,11 +329,11 @@ export default function Page() {
             width: '100%', maxWidth: 1200, margin: '0 auto', gap: 60,
           }}>
             {/* Left text panel */}
-            <div className="reveal" style={{ flex: 1, maxWidth: 520 }}>
+            <div className="reveal nr-hero-text" style={{ flex: 1, maxWidth: 520 }}>
               <p className="gold-tag" style={{ marginBottom: 12 }}>
                 Limited Edition · 500 Pieces
               </p>
-              <div style={{ marginBottom: 12 }}>
+              <div className="nr-hero-logo-wrap" style={{ marginBottom: 12 }}>
                 <NRLogo size={90} variant="white" showTagline={false} />
               </div>
               <h1 style={{
@@ -329,14 +345,14 @@ export default function Page() {
               }}>
                 Calibre I
               </h1>
-              <p style={{
+              <p className="nr-hero-sub" style={{
                 color: 'rgba(255,255,255,0.56)', fontSize: 14,
                 letterSpacing: '0.2em', textTransform: 'uppercase',
                 marginBottom: 52, fontWeight: 300,
               }}>
                 42mm Automatic · Swiss Movement
               </p>
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <div className="nr-hero-btns" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                 <button className="btn-w" onClick={() => scrollTo('reserve')}>
                   Reserve Now
                 </button>
@@ -389,16 +405,19 @@ export default function Page() {
               <Photo
                 src="/watches/1.jpeg"
                 alt="NR Calibre I – side profile"
+                className="nr-gallery-p1"
                 style={{ width: '100%', aspectRatio: '4/3', borderRadius: 16 }}
               />
               <Photo
                 src="/watches/2.jpeg"
                 alt="NR Calibre I – dial detail"
+                className="nr-gallery-p2"
                 style={{ width: '100%', aspectRatio: '4/3', borderRadius: 16 }}
               />
               <Photo
                 src="/watches/3.jpeg"
                 alt="NR Calibre I – collection"
+                className="nr-gallery-p3"
                 style={{
                   width: '100%', aspectRatio: '16/9', borderRadius: 16,
                   gridColumn: '1 / -1', maxHeight: 340,
@@ -407,7 +426,7 @@ export default function Page() {
             </div>
 
             {/* Bottom row */}
-            <div className="reveal rd3" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 16 }}>
+            <div className="reveal rd3 nr-gallery-bottom" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 16 }}>
               <Photo
                 src="/watches/4.jpeg"
                 alt="NR Calibre I – movement"
@@ -463,8 +482,8 @@ export default function Page() {
             display: 'flex', alignItems: 'center', gap: 60,
           }}>
             {/* Text */}
-            <div className="reveal" style={{ flex: 1 }}>
-              <div className="glass" style={{ borderRadius: 24, padding: '52px 44px' }}>
+            <div className="reveal nr-story-text" style={{ flex: 1 }}>
+              <div className="glass nr-story-glass" style={{ borderRadius: 24, padding: '52px 44px' }}>
                 <p className="gold-tag" style={{ marginBottom: 20 }}>Our Maison</p>
                 <h2 style={{
                   fontFamily: SERIF, fontSize: 'clamp(26px, 3.2vw, 44px)',
@@ -484,7 +503,7 @@ export default function Page() {
                     marginBottom: i < 2 ? 20 : 0,
                   }}>{t}</p>
                 ))}
-                <div style={{ marginTop: 40, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                <div className="nr-story-btns" style={{ marginTop: 40, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                   <button className="btn-w" onClick={() => scrollTo('reserve')}>Reserve Now</button>
                   <button className="btn-g" onClick={() => scrollTo('gallery')}>View Collection</button>
                 </div>
