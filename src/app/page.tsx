@@ -233,16 +233,20 @@ export default function Page() {
           /* ─── HERO: text+photo top · glass features bottom ─── */
           .nr-hero-section {
             padding: 0 16px !important;
-            padding-top: 58px !important;
+            padding-top: 56px !important;
             min-height: 100svh !important;
             display: flex !important;
-            align-items: center !important;
+            align-items: stretch !important;
           }
           .nr-hero-inner {
             display: flex !important;
             flex-direction: column !important;
-            gap: 20px !important;
+            justify-content: space-between !important;
+            min-height: calc(100svh - 56px) !important;
+            padding-top: 14px !important;
+            padding-bottom: 22px !important;
             width: 100% !important;
+            gap: 0 !important;
           }
           .nr-hero-grid {
             flex-direction: row !important;
