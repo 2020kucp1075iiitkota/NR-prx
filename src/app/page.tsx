@@ -130,10 +130,12 @@ export default function Page() {
   return (
     <>
       <style>{`
-        html, body { margin: 0; padding: 0; background: #062a22; overflow-x: hidden; }
+        html, body { margin: 0; padding: 0; background: #062a22; overflow-x: hidden; user-select: none; -webkit-user-select: none; }
         *, *::before, *::after { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        a { text-decoration: none; color: inherit; }
+        html { scroll-behavior: smooth; cursor: default; }
+        a { text-decoration: none; color: inherit; cursor: pointer; }
+        button { cursor: pointer; }
+        input, textarea { user-select: text; -webkit-user-select: text; cursor: text; }
 
         @keyframes nr-rise   { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
         @keyframes nr-sweep  { from { width:0; } to { width:120px; } }
